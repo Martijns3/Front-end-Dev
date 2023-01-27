@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Winc-winc Dating</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <header>
+            <h1>Winc-winc Dating</h1>
+            <nav>
+                <a href="index.html ">Home</a>
+                <a href="people.html">Members</a>
+                <a href="reviews.html">What other people say</a>
+                <a href="signup.html">Join us</a>
+            </nav>
+        </header>
+        <main>
+            <div class="joinblock1">
+                <h2>Please fill out this form to join us.</h2>
+            </div>
+            <div class="outerblock2">
+                <form>
+                    <div class="joinblock1">
+                        <label
+                            >What is your full name?
+                            <input
+                                type="text"
+                                placeholder="Piet Paulusma"
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div class="joinblock1">
+                        <label>
+                            Please choose a username (minimal 6 characters):
+                            <input
+                                type="text"
+                                minlength="6"
+                                placeholder="Piet99"
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div class="joinblock1">
+                        <label for="pass">
+                            Choose a password (minimal 8 characters):</label
+                        >
+                        <input
+                            type="password"
+                            id="pass"
+                            name="password"
+                            required
+                            minlength="8"
+                            placeholder="minimal 8 characters"
+                        />
+                    </div>
+                    <div class="joinblock1">
+                        <label for="email"> Enter your email adress:</label>
+                        <input
+                            type="mail"
+                            id="email"
+                            placeholder="piet@paulusma.nl"
+                            required
+                        />
+                    </div>
+                    <div class="joinblock1">
+                        <label>Enter your postal code:</label>
+                        <input
+                            type="text"
+                            required
+                            placeholder="1001-AA"
+                            pattern="[0-9]{4}-[A-Z]{2}"
+                        />
+                    </div>
+                    <div class="joinblock2">
+                        <label for="aboutbox"
+                            >Tell us something about you:</label
+                        >
+                    </div>
+                    <div class="joinblock3">
+                        <textarea
+                            id="aboutbox"
+                            name="aboutbox"
+                            cols="30"
+                            rows="5"
+                            minlength="100"
+                            required
+                            placeholder="Tell us something about you, minimal 100 characters"
+                        ></textarea>
+                    </div>
+                    <div class="joinblock1">
+                        <label for="gender">What's your gender?</label>
+
+                        <select name="gender" id="gender" required>
+                            <option value="">--please select--</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                            <option value="other">Other</option>
+                            <option value="refuse">Don't wanna tell</option>
+                        </select>
+
+                        I'm interested to meet:
+                        <ul style="list-style-type: none">
+                            <li>
+                                <input
+                                    type="radio"
+                                    id="women"
+                                    name="interest"
+                                    value="women"
+                                    required
+                                />
+                                <label for="women">Women</label>
+                            </li>
+                            <li>
+                                <input
+                                    type="radio"
+                                    id="men"
+                                    name="interest"
+                                    value="men"
+                                />
+                                <label for="men">Men</label>
+                            </li>
+                            <li>
+                                <input
+                                    type="radio"
+                                    id="mandw"
+                                    name="interest"
+                                    value="mandw"
+                                />
+                                <label for="mandw">Men and women</label>
+                            </li>
+                            <li>
+                                <input
+                                    type="radio"
+                                    id="anyone"
+                                    name="interest"
+                                    value="anyone"
+                                />
+                                <label for="anyone">Anyone</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="joinblock1">
+                        <label for="distance"
+                            >Select maximum distance from your city</label
+                        >
+
+                        <select id="distance" name="distance" required>
+                            <option value="">
+                                --select maximum distance--
+                            </option>
+                            <option value="10 km">10 km</option>
+                            <option value="30 km">30 km</option>
+                            <option value="50 km">50 km</option>
+                            <option value="75 km">75 km</option>
+                            <option value="don't care">I don't care</option>
+                        </select>
+                    </div>
+                    <div class="joinblock1">
+                        <label for="newsletter"
+                            >I would like to receive news mails</label
+                        >
+                        <input
+                            type="checkbox"
+                            id="newsletter"
+                            name="newsletter"
+                            value="yes"
+                        />
+                    </div>
+                    <div class="joinblock1">
+                        <label>
+                            All filled out?
+                            <input type="submit" value="Register!" />
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div class="joinblock1">
+                All rights reserved.
+                <address>
+                    Contact the webmaster
+                    <a href="mailto:x@y.com">Marty</a> in case of any questions
+                    or remaks regarding this site.
+                </address>
+            </div>
+        </footer>
+    </body>
+</html>
