@@ -168,74 +168,73 @@ export const RecipePage = ({ selectedItemState, clickFn }) => {
                                         </Center>
                                     ))}
                                 </Flex>
-                                <Text
-                                    marginBottom={-4}
-                                    fontSize={[10, 12, 14]}
-                                    fontWeight="bold"
-                                >
-                                    Total Nutrients:
-                                </Text>
-                                <Grid
-                                    templateColumns="repeat(3, 1fr)"
-                                    templateRows={["50px", "50px"]}
-                                    fontSize={[10, 10, 12]}
-                                >
-                                    <GridItem>
-                                        Energy: <br />
-                                        {Math.round(
-                                            selectedItemState.totalNutrients
-                                                .ENERC_KCAL.quantity
-                                        )}{" "}
-                                        kcal
-                                    </GridItem>
-                                    <GridItem>
-                                        Protein:
-                                        <br />
-                                        {Math.round(
-                                            selectedItemState.totalNutrients
-                                                .PROCNT.quantity
-                                        )}{" "}
-                                        gr
-                                    </GridItem>
-                                    <GridItem>
-                                        Fat:
-                                        <br />
-                                        {Math.round(
-                                            selectedItemState.totalNutrients.FAT
-                                                .quantity
-                                        )}{" "}
-                                        gr
-                                    </GridItem>
-                                    <GridItem>
-                                        Carbs:
-                                        <br />
-                                        {Math.round(
-                                            selectedItemState.totalNutrients
-                                                .CHOCDF.quantity
-                                        )}{" "}
-                                        gr
-                                    </GridItem>
-                                    <GridItem>
-                                        Cholesterol:
-                                        <br />
-                                        {Math.round(
-                                            selectedItemState.totalNutrients
-                                                .CHOLE.quantity
-                                        )}{" "}
-                                        mg
-                                    </GridItem>
-                                    <GridItem>
-                                        Sodium:
-                                        <br />
-                                        {Math.round(
-                                            selectedItemState.totalNutrients.NA
-                                                .quantity
-                                        )}{" "}
-                                        mg
-                                    </GridItem>
-                                </Grid>
                             </>
                         )}
+                        <Text
+                            marginBottom={-4}
+                            fontSize={[10, 12, 14]}
+                            fontWeight="bold"
+                        >
+                            Total Nutrients:
+                        </Text>
+                        <Grid
+                            templateColumns="repeat(3, 1fr)"
+                            templateRows={["50px", "50px"]}
+                            fontSize={[10, 10, 12]}
+                        >
+                            <GridItem>
+                                Energy: <br />
+                                {Math.round(
+                                    selectedItemState.totalNutrients.ENERC_KCAL
+                                        .quantity
+                                )}{" "}
+                                kcal
+                            </GridItem>
+                            <GridItem>
+                                Protein:
+                                <br />
+                                {Math.round(
+                                    selectedItemState.totalNutrients.PROCNT
+                                        .quantity
+                                )}{" "}
+                                gr
+                            </GridItem>
+                            <GridItem>
+                                Fat:
+                                <br />
+                                {Math.round(
+                                    selectedItemState.totalNutrients.FAT
+                                        .quantity
+                                )}{" "}
+                                gr
+                            </GridItem>
+                            <GridItem>
+                                Carbs:
+                                <br />
+                                {Math.round(
+                                    selectedItemState.totalNutrients.CHOCDF
+                                        .quantity
+                                )}{" "}
+                                gr
+                            </GridItem>
+                            <GridItem>
+                                Cholesterol:
+                                <br />
+                                {Math.round(
+                                    selectedItemState.totalNutrients.CHOLE
+                                        .quantity
+                                )}{" "}
+                                mg
+                            </GridItem>
+                            <GridItem>
+                                Sodium:
+                                <br />
+                                {Math.round(
+                                    selectedItemState.totalNutrients.NA.quantity
+                                )}{" "}
+                                mg
+                            </GridItem>
+                        </Grid>
                     </Flex>
                 </Flex>
             </Flex>
