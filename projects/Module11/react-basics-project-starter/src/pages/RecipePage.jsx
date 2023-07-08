@@ -60,10 +60,16 @@ export const RecipePage = ({ selectedItemState, clickFn }) => {
                         <Text color="grey" paddingBottom={5}>
                             Dish: {selectedItemState.dishType}
                         </Text>
-                        <Text fontSize={[10, 12, 14]}>
-                            Total preparation time:{" "}
-                            {selectedItemState.totalTime} mins
-                        </Text>
+                        {selectedItemState.totalTime == 0 ? (
+                            <Text fontSize={[10, 12, 14]}>
+                                Total preparation time: N/A
+                            </Text>
+                        ) : (
+                            <Text fontSize={[10, 12, 14]}>
+                                Total preparation time:{" "}
+                                {selectedItemState.totalTime} mins
+                            </Text>
+                        )}
                         <Text fontSize={[10, 12, 14]} paddingBottom={5}>
                             Servings: {selectedItemState.yield}
                         </Text>
