@@ -14,6 +14,17 @@ import { ButtonA } from "../components/ui/Button1";
 
 export const RecipePage = ({ selectedItemState, clickFn }) => {
     window.scrollTo(0, 0);
+    const NutriList = Object.fromEntries(
+        Object.entries(selectedItemState.totalNutrients).filter(
+            ([key]) =>
+                key == "NA" ||
+                key == "FAT" ||
+                key == "ENERC_KCAL" ||
+                key == "PROCNT" ||
+                key == "CHOLE" ||
+                key == "CHOCDF"
+        )
+    );
 
     return (
         <Flex justify="center" align="center">
@@ -188,58 +199,14 @@ export const RecipePage = ({ selectedItemState, clickFn }) => {
                             templateRows={["50px", "50px"]}
                             fontSize={[10, 10, 12]}
                         >
-                            <GridItem>
-                                Energy: <br />
-                                {Math.round(
-                                    selectedItemState.totalNutrients.ENERC_KCAL
-                                        .quantity
-                                )}{" "}
-                                kcal
-                            </GridItem>
-                            <GridItem>
-                                Protein:
-                                <br />
-                                {Math.round(
-                                    selectedItemState.totalNutrients.PROCNT
-                                        .quantity
-                                )}{" "}
-                                gr
-                            </GridItem>
-                            <GridItem>
-                                Fat:
-                                <br />
-                                {Math.round(
-                                    selectedItemState.totalNutrients.FAT
-                                        .quantity
-                                )}{" "}
-                                gr
-                            </GridItem>
-                            <GridItem>
-                                Carbs:
-                                <br />
-                                {Math.round(
-                                    selectedItemState.totalNutrients.CHOCDF
-                                        .quantity
-                                )}{" "}
-                                gr
-                            </GridItem>
-                            <GridItem>
-                                Cholesterol:
-                                <br />
-                                {Math.round(
-                                    selectedItemState.totalNutrients.CHOLE
-                                        .quantity
-                                )}{" "}
-                                mg
-                            </GridItem>
-                            <GridItem>
-                                Sodium:
-                                <br />
-                                {Math.round(
-                                    selectedItemState.totalNutrients.NA.quantity
-                                )}{" "}
-                                mg
-                            </GridItem>
+                            {Object.values(NutriList).map((n) => {
+                                return (
+                                    <GridItem key={n.label}>
+                                        {n.label}: <br />
+                                        {Math.round(n.quantity)} {n.unit}
+                                    </GridItem>
+                                );
+                            })}
                         </Grid>
                     </Flex>
                 </Flex>

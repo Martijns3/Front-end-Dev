@@ -5,7 +5,7 @@ export const RecipeListPage = ({ availableRecipes, clickFn }) => {
     return (
         <>
             <Flex
-                flexDir={["column", "column", "row"]}
+                // flexDir={["column", "column", "row"]}
                 justify="center"
                 align="center"
                 flexWrap="wrap"
