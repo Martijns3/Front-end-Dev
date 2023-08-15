@@ -1,26 +1,39 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Root } from "./components/Root";
+import { eventIO } from "./components/eventActions";
+// import {
+//     UsersAndCatContext,
+//     UsersAndCatContextProvider,
+// } from "ContextProvider.jsx";
+
 import {
     NewEvent,
-    createNewAndEdit as createEvent,
+    createNewEvent as createEvent,
     loader as newEventLoader,
-} from "./NewEvent";
+} from "./components/Forms/NewEvent";
+import {
+    EditEvent,
+    editEvent as editEvent,
+} from "./components/Forms/EditEvent";
 import {
     EventPage,
     loader as EventLoader,
     action as deleteEvent,
 } from "./pages/EventPage";
 
-import { Root } from "./components/Root";
-import { User, loader as userLoader } from "./User";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
     EventSearch,
     loader as EventSearchLoader,
 } from "./components/EventSearch";
 import "./index.css";
 import ErrorBoundary from "./components/ErrorBoundary";
+import {
+    UsersAndCatContext,
+    UsersAndCatContextProvider,
+} from "./ContextProvider";
 
 const router = createBrowserRouter([
     {
@@ -34,9 +47,10 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />,
             },
             // {
-            //     path: "/",
-            //     element: <EventsPage />,
-            //     loader: EventListLoader,
+            //     path: "",
+            //     element: <eventIO />,
+
+            //     errorElement: <ErrorBoundary />,
             // },
             {
                 path: "/event/:eventId",
@@ -46,9 +60,10 @@ const router = createBrowserRouter([
                 errorElement: <ErrorBoundary />,
             },
             {
-                path: "/user/:userId",
-                element: <User />,
-                loader: userLoader,
+                path: "/event/edit",
+                element: <EditEvent />,
+                action: editEvent,
+                errorElement: <ErrorBoundary />,
             },
             {
                 path: "/event/new",
@@ -64,7 +79,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("app")).render(
     <React.StrictMode>
         <ChakraProvider>
-            <RouterProvider router={router} />
+            <UsersAndCatContextProvider>
+                <RouterProvider router={router} />
+            </UsersAndCatContextProvider>
         </ChakraProvider>
     </React.StrictMode>
 );

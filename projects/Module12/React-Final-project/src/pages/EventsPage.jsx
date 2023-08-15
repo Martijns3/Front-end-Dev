@@ -1,13 +1,6 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// export const loader = async () => {
-// const users = await fetch("http://localhost:3000/users");
-// const events = await fetch("http://localhost:3000/events");
-// return { users: await users.json(), events: await events.json() };
-// };
 export const EventsPage = ({ matchedEvents }) => {
-    // const { users, events } = useLoaderData();
-
     matchedEvents.sort(function (a, b) {
         var keyA = new Date(a.startTime.split("T")[0]),
             keyB = new Date(b.startTime.split("T")[0]);

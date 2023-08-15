@@ -9,8 +9,8 @@ export const TextInput = ({ changeFn, ...props }) => {
             placeholder="search for events"
             border="2px"
             borderColor="blue.300"
-            onChange={changeFn}
             borderRadius="3xl"
+            onChange={changeFn}
             _hover={{ borderColor: "blue.300" }}
             _placeholder={{ opacity: 1, color: "gray.400" }}
             {...props}
