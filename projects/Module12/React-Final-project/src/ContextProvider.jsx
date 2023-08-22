@@ -1,10 +1,10 @@
-import React, { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const UsersAndCatContext = createContext();
 
 export const UsersAndCatContextProvider = ({ children }) => {
-    const [users, setUsers] = useState();
-    const [category, setCategories] = useState();
+    const [users, setUsers] = useState([]);
+    const [categories, setCategories] = useState([]);
     useEffect(() => {
         const fetchUser = () => {
             fetch("http://localhost:3000/users")
@@ -21,7 +21,7 @@ export const UsersAndCatContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <UsersAndCatContext.Provider value={{ category, users }}>
+        <UsersAndCatContext.Provider value={{ categories, users }}>
             {children}
         </UsersAndCatContext.Provider>
     );

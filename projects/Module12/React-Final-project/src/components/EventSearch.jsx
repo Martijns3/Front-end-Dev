@@ -1,11 +1,10 @@
-import { useState, useContext, useEffect } from "react";
-import { TextInput } from "./ui/TextInput";
-
+import { useState, useContext } from "react";
 import { Flex } from "@chakra-ui/react";
-import { EventsPage } from "../pages/EventsPage";
+import { EventsPage } from "./pages/EventsPage";
 import { useLoaderData } from "react-router-dom";
-import { Select1 } from "./ui/Selector";
+import { Select1 } from "./ui/SingleSelect";
 import { UsersAndCatContext } from "../ContextProvider";
+import { InputA } from "./ui/Input";
 
 export const loader = async () => {
     const events = await fetch("http://localhost:3000/events");
@@ -14,17 +13,8 @@ export const loader = async () => {
 };
 
 export const EventSearch = () => {
-    // const [categories, setCategories] = useState(
-    //     useContext(UsersAndCatContext)
-    // );
-    // useEffect(() => {
-    //     setCategories(useContext(UsersAndCatContext));
-    // }, []);
-
+    const { categories } = useContext(UsersAndCatContext);
     const { events } = useLoaderData();
-
-    const categories = useContext(UsersAndCatContext).category;
-
     const [searchField, setSearchField] = useState("");
     const [selectCategory, setSelectCategory] = useState("");
 
@@ -58,29 +48,45 @@ export const EventSearch = () => {
 
     return (
         <>
-            <Flex
-                direction="column"
-                justifyContent="center"
-                align="center"
-                gap="2em"
-            >
-                <TextInput changeFn={handleChange} w="300" mt="18" />
-                <p>or choose a category:</p>
-                <Select1
-                    name="selectCategory"
-                    defaultValue="Choose a category"
-                    onChange={(e) => setSelectCategory(e.target.value)}
+            <Flex justify="center">
+                <Flex
+                    w="950px"
+                    flexDir={["column", "column", "row"]}
+                    py="2em"
+                    pb={0}
+                    align="center"
+                    gap={5}
                 >
-                    <option value="">-- all Categories --</option>
-                    {categories.map((category) => (
-                        <option value={category.id} key={category.id}>
-                            {category.name}
-                        </option>
-                    ))}
-                </Select1>
+                    <Flex width="250px">
+                        <InputA
+                            color="purple.500"
+                            changeFn={handleChange}
+                            w="250px"
+                            mb={["1", "1", "3"]}
+                            placeholder="search for events"
+                        />
+                    </Flex>
 
-                <EventsPage matchedEvents={matchedEvents} />
+                    <Flex width="250px">
+                        <Select1
+                            name="selectCategory"
+                            onChange={(e) => setSelectCategory(e.target.value)}
+                        >
+                            <option value="">-- all Categories --</option>
+                            {categories.map((category) => (
+                                <option
+                                    style={{ color: "green.200" }}
+                                    value={category.id}
+                                    key={category.id}
+                                >
+                                    {category.name}
+                                </option>
+                            ))}
+                        </Select1>
+                    </Flex>
+                </Flex>
             </Flex>
+            <EventsPage matchedEvents={matchedEvents} />
         </>
     );
 };

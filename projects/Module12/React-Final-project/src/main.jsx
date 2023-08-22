@@ -3,16 +3,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./components/Root";
-import { eventIO } from "./components/eventActions";
-// import {
-//     UsersAndCatContext,
-//     UsersAndCatContextProvider,
-// } from "ContextProvider.jsx";
 
 import {
     NewEvent,
     createNewEvent as createEvent,
-    loader as newEventLoader,
 } from "./components/Forms/NewEvent";
 import {
     EditEvent,
@@ -22,18 +16,17 @@ import {
     EventPage,
     loader as EventLoader,
     action as deleteEvent,
-} from "./pages/EventPage";
+} from "./components/pages/EventPage";
 
 import {
     EventSearch,
     loader as EventSearchLoader,
 } from "./components/EventSearch";
-import "./index.css";
+
 import ErrorBoundary from "./components/ErrorBoundary";
-import {
-    UsersAndCatContext,
-    UsersAndCatContextProvider,
-} from "./ContextProvider";
+import { UsersAndCatContextProvider } from "./ContextProvider";
+import Fonts from "./components/Fonts";
+import theme from "./components/Theme";
 
 const router = createBrowserRouter([
     {
@@ -46,12 +39,7 @@ const router = createBrowserRouter([
                 loader: EventSearchLoader,
                 errorElement: <ErrorBoundary />,
             },
-            // {
-            //     path: "",
-            //     element: <eventIO />,
 
-            //     errorElement: <ErrorBoundary />,
-            // },
             {
                 path: "/event/:eventId",
                 element: <EventPage />,
@@ -69,7 +57,6 @@ const router = createBrowserRouter([
                 path: "/event/new",
                 element: <NewEvent />,
                 action: createEvent,
-                loader: newEventLoader,
                 errorElement: <ErrorBoundary />,
             },
         ],
@@ -78,7 +65,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("app")).render(
     <React.StrictMode>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
+            <Fonts />
             <UsersAndCatContextProvider>
                 <RouterProvider router={router} />
             </UsersAndCatContextProvider>
