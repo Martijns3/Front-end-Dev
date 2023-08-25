@@ -63,7 +63,7 @@ export const NewEvent = () => {
     categories.map((category) =>
         optionList.push({ value: category.id, label: category.name })
     );
-    const [value, setValue] = useState("/src/utils/field-of-sunflower.jpg");
+    const [value, setValue] = useState("/public/img/field-of-sunflower.jpg");
 
     let imgLinkHeight;
     if (value.length > 0) {
@@ -71,7 +71,7 @@ export const NewEvent = () => {
     } else {
         imgLinkHeight = 1;
     }
-    console.log(value.length, imgLinkHeight);
+
     return (
         <Flex className="new-event" justify="center">
             <Flex direction="column" w="500px" mt="-1">

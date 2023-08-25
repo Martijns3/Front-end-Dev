@@ -7,7 +7,7 @@ export const eventIO = async (formData = {}, method, id = 0) => {
     const successMessage = [
         "Success: Event Deleted",
         "Success: Event edits were saved",
-        "New Event added",
+        "Success: New Event added",
     ];
     if (method == "POST") {
         let toastMessage = successMessage[2];
@@ -35,7 +35,14 @@ export const eventIO = async (formData = {}, method, id = 0) => {
                 .then((json) => json.id);
 
             reRoute(method, newId);
-        } catch {}
+        } catch {
+            toast({
+                title: ` A server error has occured`,
+                status: "error",
+            });
+            method = "ERROR";
+            reRoute(method, id);
+        }
     }
     if (method == "DELETE" || method == "PUT") {
         let toastMessage = "";
@@ -69,7 +76,14 @@ export const eventIO = async (formData = {}, method, id = 0) => {
             });
             if (method == "PUT") reRoute(method, id);
             if (method == "DELETE") reRoute(method);
-        } catch {}
+        } catch {
+            toast({
+                title: ` A server error has occured`,
+                status: "error",
+            });
+            method = "ERROR";
+            reRoute(method, id);
+        }
     }
 };
 const reRoute = (method, newId = 0) => {
