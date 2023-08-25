@@ -7,7 +7,8 @@ import { UsersAndCatContext } from "../ContextProvider";
 import { InputA } from "./ui/Input";
 
 export const loader = async () => {
-    const events = await fetch("http://localhost:3000/events");
+    const API = "http://localhost:3000";
+    const events = await fetch(`${API}/events`);
 
     return { events: await events.json() };
 };

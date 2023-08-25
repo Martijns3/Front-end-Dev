@@ -3,18 +3,18 @@ import { createContext, useState, useEffect } from "react";
 export const UsersAndCatContext = createContext();
 
 export const UsersAndCatContextProvider = ({ children }) => {
+    const API = "http://localhost:3000";
     const [users, setUsers] = useState([]);
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         const fetchUser = () => {
-            fetch("http://localhost:3000/users")
+            fetch(`${API}/users`)
                 .then((response) => response.json())
-                .then((result) => setUsers(result))
-                .catch((error) => console.log("An error occured"));
-            fetch("http://localhost:3000/categories")
+                .then((result) => setUsers(result));
+
+            fetch(`${API}/categories`)
                 .then((response) => response.json())
-                .then((result) => setCategories(result))
-                .catch((error) => console.log("An error occured"));
+                .then((result) => setCategories(result));
         };
 
         fetchUser();

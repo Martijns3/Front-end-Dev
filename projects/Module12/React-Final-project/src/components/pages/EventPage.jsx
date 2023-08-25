@@ -25,7 +25,8 @@ import { eventIO } from "../eventActions";
 import { UsersAndCatContext } from "../../ContextProvider";
 
 export const loader = async ({ params }) => {
-    const event = await fetch(`http://localhost:3000/events/${params.eventId}`);
+    const API = "http://localhost:3000";
+    const event = await fetch(`${API}/events/${params.eventId}`);
     return {
         event: await event.json(),
     };

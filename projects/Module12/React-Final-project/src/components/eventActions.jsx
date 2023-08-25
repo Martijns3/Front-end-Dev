@@ -3,6 +3,7 @@ import { createStandaloneToast } from "@chakra-ui/react";
 const { toast } = createStandaloneToast();
 
 export const eventIO = async (formData = {}, method, id = 0) => {
+    const API = "http://localhost:3000";
     const successMessage = [
         "Success: Event Deleted",
         "Success: Event edits were saved",
@@ -11,7 +12,7 @@ export const eventIO = async (formData = {}, method, id = 0) => {
     if (method == "POST") {
         let toastMessage = successMessage[2];
         try {
-            const newId = await fetch("http://localhost:3000/events", {
+            const newId = await fetch(`${API}/events`, {
                 method: method,
                 body: JSON.stringify(formData),
                 headers: { "Content-Type": "application/json" },
@@ -51,23 +52,21 @@ export const eventIO = async (formData = {}, method, id = 0) => {
             headers: { "Content-Type": "application/json" },
         };
         try {
-            await fetch(`http://localhost:3000/events/${id}`, body).then(
-                (response) => {
-                    if (response.ok) {
-                        toast({
-                            title: toastMessage,
-                            status: "success",
-                        });
-                    } else {
-                        toast({
-                            title: `Delete Error ${response.status} has occured: ${response.statusText}`,
-                            status: "error",
-                        });
-                        method = "POST";
-                        reRoute(method, id);
-                    }
+            await fetch(`${API}/events/${id}`, body).then((response) => {
+                if (response.ok) {
+                    toast({
+                        title: toastMessage,
+                        status: "success",
+                    });
+                } else {
+                    toast({
+                        title: `Delete Error ${response.status} has occured: ${response.statusText}`,
+                        status: "error",
+                    });
+                    method = "POST";
+                    reRoute(method, id);
                 }
-            );
+            });
             if (method == "PUT") reRoute(method, id);
             if (method == "DELETE") reRoute(method);
         } catch {}
