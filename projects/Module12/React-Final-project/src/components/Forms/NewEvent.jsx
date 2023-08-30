@@ -73,8 +73,17 @@ export const NewEvent = () => {
     }
 
     return (
-        <Flex className="new-event" justify="center">
-            <Flex direction="column" w="500px" mt="-1">
+        <Flex
+            className="new-event"
+            justify={["flex-start", "flex-start", "flex-start", "center"]}
+            px={[3, 3, 3, 6]}
+        >
+            <Flex
+                direction="column"
+                w={["100%", "100%", "500px", "500px"]}
+                mt="-1"
+                mb={[2, 2, 2, 2]}
+            >
                 <Text fontSize={["30px", "34px", "40px"]} mb="1em">
                     Create a new event
                 </Text>
