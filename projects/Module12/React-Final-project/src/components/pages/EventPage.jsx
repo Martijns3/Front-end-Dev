@@ -15,7 +15,6 @@ import {
     List,
     ListItem,
     ListIcon,
-    Spacer,
 } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
@@ -116,8 +115,8 @@ export const EventPage = () => {
                     </Flex>
                     <Flex direction={"row"} width="100%" pb="3">
                         <Flex
-                            w={["100", "100%", "100%", "50%"]}
-                            display="border-box"
+                            direction="column"
+                            w={["100%", "100%", "100%", "50%"]}
                             px={8}
                         >
                             <Text as="b" className="categories">
@@ -126,7 +125,7 @@ export const EventPage = () => {
                             <Flex
                                 direction="column"
                                 h="50px"
-                                minHeight={["78px", "78px", "90px", "90px"]}
+                                minHeight={["59px", "59px", "68px", "68px"]}
                                 wrap="wrap"
                                 fontSize={[13, 13, 15, 15]}
                             >
@@ -144,10 +143,10 @@ export const EventPage = () => {
                                 ))}
                             </Flex>
                             <br></br>
-                            <Spacer />
+
                             <Flex direction="column">
                                 <Text as="b"> Created by:</Text>
-                                <Box>
+                                <Box mb="10">
                                     {user.map((u) => (
                                         <p key={u.id}>
                                             {u.name}
